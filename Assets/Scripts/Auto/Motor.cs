@@ -6,19 +6,19 @@ public class Motor //PARCIAL 2 - Santiago Postacchini
 {
     [Header("Motor")]
     [Tooltip("Maximo de velocidad del auto")]
-    public float carTopSpeed;
+    public float carTopSpeed = 10f;
     [Tooltip("Maximo de velocidad del auto en reversa")]
-    public float carReverseTopSpeed;
+    public float carReverseTopSpeed = -5f;
     [Tooltip("Esto es un valor para escalar la cantidad de efecto freno-motor que se va a aplicar al dejar de acelerar")]
-    public float engineBrake;
-    public AnimationCurve powerCurve;
-    public AnimationCurve brakeCurve;
+    public float engineBrake = 2f; 
+    
 
-    public void UpdateMotorForce(Transform carTransform, Rigidbody carRigidbody, Transform wheelTransform, Transform wheelMesh, float accelInput, float wheelDiameter)
+    public void UpdateMotorForce(Transform carTransform, Rigidbody carRigidbody, Transform wheelTransform, Transform wheelMesh, float accelInput, float wheelDiameter, AnimationCurve powerCurve, AnimationCurve brakeCurve)
     {
-        Vector3 accelDir = wheelTransform.forward;
+        //Debug.Log("Motor engage");
+        Vector3 accelDir = wheelTransform.right;
 
-        Vector3 brakeDir = -wheelTransform.forward;
+        Vector3 brakeDir = -wheelTransform.right;
 
         if (accelInput > 0.0f)
         {

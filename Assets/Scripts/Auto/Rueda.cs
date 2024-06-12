@@ -16,6 +16,8 @@ public class Rueda : MonoBehaviour//, ISlippery //PARCIAL 2 - Santiago Postacchi
     public Transform wheelMesh;
     public Rigidbody carRigidbody;
     public Transform carTransform;
+    public AnimationCurve pCurve;
+    public AnimationCurve bCurve;
 
     [Header("Rueda")]
     [Tooltip("Radio de la rueda")]
@@ -95,9 +97,20 @@ public class Rueda : MonoBehaviour//, ISlippery //PARCIAL 2 - Santiago Postacchi
 
             _deslizamiento.UpdateFrictionForce(carTransform, carRigidbody, transform, tireMass);
 
-            _motor.UpdateMotorForce(carTransform, carRigidbody, transform, wheelMesh, accelInput, wheelDiameter);
+            _motor.UpdateMotorForce(carTransform, carRigidbody, transform, wheelMesh, accelInput, wheelDiameter, pCurve, bCurve);
+        }
+        else
+        {
+            //cambiar input a la rotacion
         }
 
+    }
+
+    public void RotateBody(float steerInput, float accelInput)
+    {
+        Vector3 horizontalDir = transform.up * steerInput;
+        Vector3 verticalDir = transform.right * accelInput;
+        carRigidbody.AddForceAtPosition(horizontalDir + verticalDir, transform.position);
     }
 
     //public void Spin(float spinForce, float timeToStop)

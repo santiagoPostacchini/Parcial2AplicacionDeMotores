@@ -5,13 +5,15 @@ using UnityEngine;
 public class Deslizamiento //PARCIAL 2 - Santiago Postacchini
 {
     [Tooltip("Factor de agarre de la rueda")]
-    public float tireGripFactor;
+    public float tireGripFactor = 1f;
 
     public void UpdateFrictionForce(Transform carTransform, Rigidbody carRigidbody, Transform wheelTransform, float tireMass)
     {
+        //Debug.Log("Slipping engage");
+
         Vector3 tireWorldVel = carRigidbody.GetPointVelocity(wheelTransform.position);
 
-        Vector3 steeringDir = wheelTransform.right;
+        Vector3 steeringDir = wheelTransform.forward;
 
         float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
 

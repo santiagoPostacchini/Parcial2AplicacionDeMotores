@@ -6,14 +6,15 @@ public class Suspension //PARCIAL 2 - Santiago Postacchini
 {
     [Header("Valores de suspension")]
     [Tooltip("Esta es la fuerza del resorte")]
-    [SerializeField] public float springStiffness;
+    [SerializeField] public float springStiffness = 100f;
     [Tooltip("Esto es como el \"largo\" de la suspension antes de que cualquier fuerza se aplique")]
-    [SerializeField] public float suspensionRestDistance;
+    [SerializeField] public float suspensionRestDistance = 0.45f;
     [Tooltip("Esto actua como la viscosidad del liquido hidraulico, lo que determina que tan rapido se estabiliza la suspension")]
-    [SerializeField] public float damperStiffness;
+    [SerializeField] public float damperStiffness = 2f;
 
     public void UpdateSuspentionForce(Transform carTransform, Rigidbody carRigidbody, Transform wheelTransform, RaycastHit tireRay, Transform wheelMesh, float wheelRadius)
     {
+        //Debug.Log("Suspention engage");
         wheelMesh.transform.localPosition = new Vector3(0f, -wheelTransform.position.y * Mathf.Clamp((tireRay.distance - wheelRadius), 0f, suspensionRestDistance), 0f);
 
         Vector3 springDirection = wheelTransform.up;

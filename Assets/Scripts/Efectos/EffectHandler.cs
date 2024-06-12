@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectHandler : MonoBehaviour
+public class EffectHandler : MonoBehaviour//, ISlippery
 {
     public Rueda[] wheels;
     public Rigidbody carRigidBody;
     public GameObject detector;
 
-    private void Start()
-    {
-        detector = transform.Find("Detector").gameObject;
-    }
+    //public IEnumerator LowGrip(float t)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
+
+    //public void StartLowGrip(float t)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
+
+    //private void Start()
+    //{
+    //    detector = transform.Find("Detector").gameObject;
+    //}
 
     /*private void OnCollisionEnter(Collision collision)
     {

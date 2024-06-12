@@ -7,6 +7,6 @@ public class AutoPlayer : Auto //PARCIAL 2 - Santiago Postacchini
 {
     void Start()
     {
-        _input = new InputPlayer();
+        //_input = new InputPlayer();
     }
 }
